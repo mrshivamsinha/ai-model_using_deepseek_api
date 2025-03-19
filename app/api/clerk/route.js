@@ -22,11 +22,12 @@ export async function POST(req) {
 
     // Prepare the user data to be saved in the database
     const userData = {
-        _id: new mongoose.Types.ObjectId(data.id), // Ensure a valid ObjectId
+        _id: data.id, // ✅ Store Clerk's ID directly as a string
         email: data.email_addresses[0].email_address,
         name: `${data.first_name} ${data.last_name}`,
         image: data.image_url,
     };
+    
 
     await connectDB();
 
